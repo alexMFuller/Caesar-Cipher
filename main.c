@@ -14,6 +14,11 @@ int main(int argsc, char** argsv) {
     exit(-1); 
   }
 
+	if (atoi(argsv[3])>25||atoi(argsv[3])<-25){
+		printf("\ninvalid offset, try again");
+		exit(-1);
+	}
+
 	fseek(in_file, 0, SEEK_END); // seek to end of file
 	int size = ftell(in_file); // get current file pointer
 	fseek(in_file, 0, SEEK_SET);
