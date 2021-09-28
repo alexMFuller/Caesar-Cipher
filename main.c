@@ -32,12 +32,14 @@ int main(int argsc, char** argsv) {
   while(n != EOF){
         /* Read single character from file */
         n = caesar(fgetc(in_file),offset);
-				printf("\n%c",n);
+				
         /* add character to cipher string */
-				fprintf(output,"%c",n);
+				
+					fprintf(output,"%c",n);
+				
 				
     }  /* Repeat this if last read character is not the null terminator */
-
+		
     /* Done with this file, close file to release resource */
     fclose(in_file);
 		fclose(output);
