@@ -22,30 +22,26 @@ int main(int argsc, char** argsv) {
 	fseek(in_file, 0, SEEK_END); // seek to end of file
 	int size = ftell(in_file); // get current file pointer
 	fseek(in_file, 0, SEEK_SET);
-	char cipher[size];
 	char* outputFileName = argsv[2];
 
 
 	int offset = atoi(argsv[3]);
 	char n;
-  do 
-    {
+	FILE* output = fopen( outputFileName, "w");
+	
+  while(n != EOF){
         /* Read single character from file */
         n = caesar(fgetc(in_file),offset);
-
+				printf("\n%c",n);
         /* add character to cipher string */
+				fprintf(output,"%c",n);
 				
-				strncat(cipher, &n, 1);
-				
-
-
-    } while(n != EOF); /* Repeat this if last read character is not EOF */
+    }  /* Repeat this if last read character is not the null terminator */
 
     /* Done with this file, close file to release resource */
     fclose(in_file);
-		FILE* output = fopen( outputFileName, "w");
-		fprintf(output,"%s",cipher);
-
+		fclose(output);
+		
 
   return 0;
 }

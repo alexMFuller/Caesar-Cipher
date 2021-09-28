@@ -1,15 +1,28 @@
 #include "caesar.h"
 
 char caesar(char s, int n){
-	char moved = s+n%26;
-	if ((s>96&&s<123)||(s>64&&s<91)){
-		if ((s>64&&moved<=64)||(s>96&&moved<=96)){
-			moved = moved + 25;
-		}
-		else if((s<123&&moved>=123)||(s<96&&moved>=91)){
+
+	char moved;
+
+
+	if (( s >= 'a' && s <= 'z')){
+		moved = s+n%26;
+		if(moved > 'z'){
 			moved = moved - 25;
 		}
-
+		else if (moved<'a'){
+			moved = moved + 25;
+		}
+		return moved;
+	}
+	else if (( s >= 'A' && s <= 'Z')){
+		moved = s+n%26;
+		if(moved > 'Z'){
+			moved = moved - 25;
+		}
+		else if (moved<'A'){
+			moved = moved + 25;
+		}
 		return moved;
 	}
 	else{
