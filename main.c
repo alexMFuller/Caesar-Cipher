@@ -2,17 +2,21 @@
 #include <string.h>
 #include <stdlib.h>
 #include "caesar.h"
+#include <unistd.h>
 
 
 int main(int argsc, char** argsv) {
-	int c = 'c';
+	
 	FILE* in_file = fopen(argsv[1], "r"); // read only  
   
-	
   if (! in_file )  {  
     printf("\noops, file can't be read\n"); 
     exit(-1); 
   }
+
+	if (access("../Caesar-Cipher",W_OK)<0){
+		printf("\nYou do not have write permissions for this directory");
+	}
 
 	if (atoi(argsv[3])>25||atoi(argsv[3])<-25){
 		printf("\ninvalid offset, try again");
@@ -33,12 +37,12 @@ int main(int argsc, char** argsv) {
         /* Read single character from file */
         n = caesar(fgetc(in_file),offset);
 				
-        /* add character to cipher string */
+        /* add character to output file */
 				
 					fprintf(output,"%c",n);
 				
 				
-    }  /* Repeat this if last read character is not the null terminator */
+    }  
 		
     /* Done with this file, close file to release resource */
     fclose(in_file);

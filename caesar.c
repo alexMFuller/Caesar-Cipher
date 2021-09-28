@@ -3,7 +3,7 @@
 char caesar(char s, int n){
 
 	unsigned char moved;
-	//BUG: ONCE CHARS ROLL PAST 'f' in the positive direction, they become unreadable
+	
 	
 	if (( s >= 'a' && s <= 'z' )){
 		moved = s+n%26;
