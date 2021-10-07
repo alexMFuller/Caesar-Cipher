@@ -7,7 +7,14 @@
 
 int main(int argsc, char** argsv) {
 	
-	FILE* in_file = fopen(argsv[1], "r"); // read only  
+	FILE* in_file = fopen(argsv[1], "r"); // read only 
+	
+
+	if (argsc<4){
+		printf("Incorrect number of args");
+		exit(-1);
+	}
+
   
   if (! in_file )  {  
     printf("\noops, file can't be read\n"); 
@@ -40,6 +47,8 @@ int main(int argsc, char** argsv) {
         /* add character to output file */
 				
 					fprintf(output,"%c",n);
+
+					
 				
 				
     }  
